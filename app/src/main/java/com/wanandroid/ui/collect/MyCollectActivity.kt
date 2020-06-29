@@ -58,10 +58,8 @@ class MyCollectActivity : BaseVMActivity<ArticleViewModel>(useDataBinding = true
 
     private fun initAdapter() {
         articleAdapter.run {
-            //            showStar(false)
             setOnItemClickListener { _, _, position ->
                 startKtxActivity<BrowserActivity>(value = BrowserActivity.URL to articleAdapter.data[position].link)
-//                Navigation.findNavController(collectRecycleView).navigate(R.id.action_collect_to_browser, bundleOf(BrowserActivity.URL to articleAdapter.data[position].link))
             }
             onItemChildClickListener = itemChildClickListener
             setLoadMoreView(CustomLoadMoreView())

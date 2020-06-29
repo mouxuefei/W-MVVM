@@ -66,7 +66,6 @@ class NavigationFragment : BaseVMFragment<NavigationViewModel>() {
         this.navigationList.clear()
         this.navigationList.addAll(navigationList)
         tabLayout.setTabAdapter(tabAdapter)
-
         navigationAdapter.setNewData(navigationList)
     }
 

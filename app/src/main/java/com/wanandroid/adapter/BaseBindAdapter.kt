@@ -32,7 +32,6 @@ open class BaseBindAdapter<T>(layoutResId: Int, br: Int) : BaseQuickAdapter<T, B
     }
 
     class BindViewHolder(view: View) : BaseViewHolder(view) {
-        val binding: ViewDataBinding
-            get() = itemView.getTag(R.id.BaseQuickAdapter_databinding_support) as ViewDataBinding
+        val binding: ViewDataBinding = itemView.getTag(R.id.BaseQuickAdapter_databinding_support) as ViewDataBinding
     }
 }

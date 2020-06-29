@@ -38,7 +38,6 @@ class ShareViewModel(private val repository: ShareRepository) : BaseViewModel() 
 
             val result = repository.shareArticle(title.get()?:"", url.get()?:"")
 
-
             withContext(Dispatchers.Main){
                 if (result is Result.Success){
                     emitUiState(showProgress = false,showSuccess = result.data,enableShareButton = true)

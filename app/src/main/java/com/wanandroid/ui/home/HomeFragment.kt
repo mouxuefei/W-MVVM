@@ -13,10 +13,12 @@ import com.util.ktx.ext.toast
 import com.youth.banner.BannerConfig
 import kotlinx.android.synthetic.main.fragment_home.*
 import com.mvvm.core.base.BaseVMFragment
+import com.util.ktx.ext.startKtxActivity
 import com.wanandroid.R
 import com.wanandroid.adapter.HomeArticleAdapter
 import com.wanandroid.model.bean.Banner
 import com.wanandroid.ui.BrowserActivity
+import com.wanandroid.ui.login.LoginActivity
 import com.wanandroid.ui.square.ArticleViewModel
 import com.wanandroid.util.GlideImageLoader
 import com.wanandroid.util.Preference
@@ -58,7 +60,7 @@ class HomeFragment : BaseVMFragment<ArticleViewModel>() {
         homeArticleAdapter.run {
             setOnItemClickListener { _, _, position ->
                 val bundle = bundleOf(BrowserActivity.URL to homeArticleAdapter.data[position].link)
-
+                startKtxActivity<BrowserActivity>(extra = bundle)
             }
             onItemChildClickListener = this@HomeFragment.onItemChildClickListener
             if (headerLayoutCount > 0) removeAllHeaderView()
@@ -80,7 +82,7 @@ class HomeFragment : BaseVMFragment<ArticleViewModel>() {
                         notifyDataSetChanged()
                     }
                 } else {
-//                    Navigation.findNavController(homeRecycleView).navigate(R.id.action_tab_to_login)
+                    startKtxActivity<LoginActivity>()
                 }
             }
         }
@@ -98,7 +100,7 @@ class HomeFragment : BaseVMFragment<ArticleViewModel>() {
             setImageLoader(GlideImageLoader())
             setOnBannerListener { position ->
                 run {
-//                    Navigation.findNavController(banner).navigate(R.id.action_tab_to_browser, bundleOf(BrowserActivity.URL to bannerUrls[position]))
+                    startKtxActivity<BrowserActivity>(extra = bundleOf(BrowserActivity.URL to bannerUrls[position]))
                 }
             }
         }
