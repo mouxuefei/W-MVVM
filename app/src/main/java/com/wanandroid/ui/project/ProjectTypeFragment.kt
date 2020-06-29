@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.fragment_projecttype.*
 import kotlinx.android.synthetic.main.fragment_systemtype.*
 import com.mvvm.core.base.BaseVMFragment
 import com.mvvm.core.view.SpaceItemDecoration
+import com.util.ktx.ext.startKtxActivity
 import com.wanandroid.BR
 import com.wanandroid.R
 import com.wanandroid.adapter.BaseBindAdapter
@@ -69,7 +70,7 @@ class ProjectTypeFragment : BaseVMFragment<ArticleViewModel>() {
         projectRefreshLayout.setOnRefreshListener { refresh() }
         projectAdapter.run {
             setOnItemClickListener { _, _, position ->
-//                Navigation.findNavController(projectRecycleView).navigate(R.id.action_tab_to_browser, bundleOf(BrowserActivity.URL to projectAdapter.data[position].link))
+                startKtxActivity<BrowserActivity>( extra = bundleOf(BrowserActivity.URL to projectAdapter.data[position].link))
             }
             setLoadMoreView(CustomLoadMoreView())
             setOnLoadMoreListener({ loadMore() }, typeRecycleView)

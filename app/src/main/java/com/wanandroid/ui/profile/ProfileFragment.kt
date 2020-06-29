@@ -22,6 +22,8 @@ import com.mvvm.core.base.BaseFragment
 import com.wanandroid.R
 import com.wanandroid.model.bean.User
 import com.wanandroid.test.ConstraintLayoutTest
+import com.wanandroid.ui.collect.MyCollectActivity
+import com.wanandroid.ui.login.LoginActivity
 import com.wanandroid.util.GITHUB_PAGE
 import com.wanandroid.util.ISSUE_URL
 import com.wanandroid.util.Preference
@@ -54,8 +56,8 @@ class ProfileFragment : BaseFragment() {
         feedback.setOnClickListener { showFeedBackMenu() }
         thirdLib.setOnClickListener { showLicenseDialog() }
         developer.setOnClickListener { showMe() }
-        loginLayout.setOnClickListener { }
-        collect.setOnClickListener {  }
+        loginLayout.setOnClickListener { startKtxActivity<LoginActivity>()}
+        collect.setOnClickListener { startKtxActivity<MyCollectActivity>() }
     }
 
     private fun refreshData() {

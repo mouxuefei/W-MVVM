@@ -10,14 +10,13 @@ import com.mvvm.core.base.BaseVMActivity
 import com.wanandroid.R
 import com.wanandroid.model.bean.Title
 import org.koin.androidx.viewmodel.ext.android.getViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * Created by Lu
  * on 2018/4/5 07:56
  */
 @AndroidEntryPoint
-class LoginActivity : BaseVMActivity<LoginViewModel>() {
+class LoginActivity : BaseVMActivity<LoginViewModel>(useDataBinding = true) {
 
     private val loginViewModel by viewModels<LoginViewModel>()
 

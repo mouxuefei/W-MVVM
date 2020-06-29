@@ -28,7 +28,7 @@ class LoginViewModel @ViewModelInject constructor(val repository: LoginRepositor
 
     private fun isInputValid(userName: String, passWord: String) = userName.isNotBlank() && passWord.isNotBlank()
 
-    fun loginDataChanged() {
+    private fun loginDataChanged() {
         _uiState.value = LoginUiState(enableLoginButton = isInputValid(userName.get()
                 ?: "", passWord.get() ?: ""))
     }
@@ -63,11 +63,14 @@ class LoginViewModel @ViewModelInject constructor(val repository: LoginRepositor
 
             val result = repository.register(userName.get() ?: "", passWord.get() ?: "")
 
-            result.checkResult({
-                _uiState.value = LoginUiState(isSuccess = it, enableLoginButton = true)
-            }, {
-                _uiState.value = LoginUiState(isError = it, enableLoginButton = true)
-            })
+            withContext(provider.main) {
+                result.checkResult({
+                    _uiState.value = LoginUiState(isSuccess = it, enableLoginButton = true)
+                }, {
+                    _uiState.value = LoginUiState(isError = it, enableLoginButton = true)
+                })
+            }
+
         }
     }
 

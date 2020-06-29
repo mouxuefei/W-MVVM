@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:binding="http://schemas.android.com/apk/res-auto">
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
+    app:ignore="NamespaceTypo">
 
     <data>
         <variable
             name="viewModel"
             type="com.wanandroid.ui.square.ArticleViewModel" />
+        <variable
+            name="title"
+            type="com.wanandroid.model.bean.Title" />
     </data>
 
     <LinearLayout
@@ -13,7 +18,17 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include layout="@layout/title_layout" />
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/mToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:titleTextColor="@color/white"
+            android:theme="@style/ThemeOverlay.MaterialComponents.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
+            title="@{title.title}"
+            icon="@{title.icon}"
+            navigationClick="@{title.action}"/>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/collectRefreshLayout"

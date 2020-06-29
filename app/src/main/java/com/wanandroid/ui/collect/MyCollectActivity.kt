@@ -1,8 +1,10 @@
 package com.wanandroid.ui.collect
 
+import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chad.library.adapter.base.BaseQuickAdapter
+import com.mvvm.core.base.BaseVMActivity
 import com.util.ktx.ext.dp
 import com.util.ktx.ext.startKtxActivity
 import com.util.ktx.ext.toast
@@ -12,6 +14,7 @@ import com.mvvm.core.view.SpaceItemDecoration
 import com.wanandroid.R
 import com.wanandroid.adapter.HomeArticleAdapter
 import com.wanandroid.databinding.ActivityCollectBinding
+import com.wanandroid.model.bean.Title
 import com.wanandroid.ui.BrowserActivity
 import com.wanandroid.ui.square.ArticleViewModel
 import com.wanandroid.view.CustomLoadMoreView
@@ -21,7 +24,7 @@ import org.koin.androidx.viewmodel.ext.android.getViewModel
  * Created by Lu
  * on 2018/4/10 22:09
  */
-class MyCollectActivity : com.mvvm.core.base.BaseVMActivity<ArticleViewModel>() {
+class MyCollectActivity : BaseVMActivity<ArticleViewModel>(useDataBinding = true) {
 
     override fun initVM(): ArticleViewModel = getViewModel()
 
@@ -32,9 +35,9 @@ class MyCollectActivity : com.mvvm.core.base.BaseVMActivity<ArticleViewModel>() 
     override fun initView() {
 
         (mBinding as ActivityCollectBinding).viewModel = mViewModel
-
-        mToolbar.title = getString(R.string.my_collect)
-        mToolbar.setNavigationIcon(R.drawable.arrow_back)
+        mBinding.run {
+            setVariable(BR.title, Title(R.string.collect, R.drawable.arrow_back) { onBackPressed() })
+        }
 
         collectRecycleView.run {
             layoutManager = LinearLayoutManager(this@MyCollectActivity)
@@ -46,7 +49,6 @@ class MyCollectActivity : com.mvvm.core.base.BaseVMActivity<ArticleViewModel>() 
     }
 
     override fun initData() {
-        mToolbar.setNavigationOnClickListener { onBackPressed() }
         refresh()
     }
 

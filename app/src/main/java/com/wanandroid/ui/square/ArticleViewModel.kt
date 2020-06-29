@@ -43,10 +43,8 @@ class ArticleViewModel(
 
 
     val mBanners: LiveData<List<Banner>> = liveData {
-        kotlin.runCatching {
             val data = homeRepository.getBanners()
             if (data is Result.Success) emit(data.data)
-        }
     }
 
 

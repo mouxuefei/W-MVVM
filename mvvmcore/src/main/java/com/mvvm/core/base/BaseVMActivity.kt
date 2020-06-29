@@ -19,13 +19,13 @@ abstract class BaseVMActivity<VM : BaseViewModel>(useDataBinding: Boolean = true
         super.onCreate(savedInstanceState)
         mViewModel = initVM()
 
-        startObserve()
         if (_useBinding) {
             mBinding = DataBindingUtil.setContentView(this, getLayoutResId())
             mBinding.lifecycleOwner =this
         } else setContentView(getLayoutResId())
         initView()
         initData()
+        startObserve()
     }
 
     open fun getLayoutResId(): Int = 0

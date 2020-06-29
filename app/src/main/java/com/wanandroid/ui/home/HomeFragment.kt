@@ -58,7 +58,7 @@ class HomeFragment : BaseVMFragment<ArticleViewModel>() {
         homeArticleAdapter.run {
             setOnItemClickListener { _, _, position ->
                 val bundle = bundleOf(BrowserActivity.URL to homeArticleAdapter.data[position].link)
-//                NavHostFragment.findNavController(this@HomeFragment).navigate(R.id.action_tab_to_browser, bundle)
+
             }
             onItemChildClickListener = this@HomeFragment.onItemChildClickListener
             if (headerLayoutCount > 0) removeAllHeaderView()

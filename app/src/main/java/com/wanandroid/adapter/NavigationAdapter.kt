@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.core.os.bundleOf
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
+import com.util.ktx.ext.startKtxActivity
 import com.zhy.view.flowlayout.FlowLayout
 import com.zhy.view.flowlayout.TagAdapter
 import com.zhy.view.flowlayout.TagFlowLayout
@@ -39,7 +40,7 @@ class NavigationAdapter(layoutResId: Int = R.layout.item_navigation) : BaseQuick
             }
 
             setOnTagClickListener { view, position, _ ->
-//                androidx.navigation.Navigation.findNavController(view).navigate(R.id.action_tab_to_browser, bundleOf(BrowserActivity.URL to item.articles[position].link))
+                mContext.startKtxActivity<BrowserActivity>( extra = bundleOf(BrowserActivity.URL to item.articles[position].link))
                 true
             }
         }

@@ -14,6 +14,7 @@ import com.wanandroid.ui.project.BlogFragment
 import com.wanandroid.ui.project.ProjectFragment
 import com.wanandroid.ui.search.SearchFragment
 import com.wanandroid.ui.square.ArticleViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * @FileName: MainActivity.java
