@@ -64,7 +64,7 @@ class SearchFragment : com.mvvm.core.base.BaseVMFragment<SearchViewModel>() {
     private fun initAdapter() {
         searchAdapter.run {
             setOnItemClickListener { _, _, position ->
-//                Navigation.findNavController(searchRecycleView).navigate(R.id.action_tab_to_browser, bundleOf(BrowserActivity.URL to searchAdapter.data[position].link))
+               startKtxActivity<BrowserActivity>(value = BrowserActivity.URL to webSitesList[position].link)
             }
             onItemChildClickListener = this@SearchFragment.onItemChildClickListener
             setLoadMoreView(CustomLoadMoreView())
@@ -80,7 +80,6 @@ class SearchFragment : com.mvvm.core.base.BaseVMFragment<SearchViewModel>() {
     }
 
     override fun initData() {
-//        searchToolbar.setNavigationOnClickListener { onBackPressed() }
         mViewModel.getHotSearch()
         mViewModel.getWebSites()
     }

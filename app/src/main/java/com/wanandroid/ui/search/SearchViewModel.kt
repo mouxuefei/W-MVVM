@@ -16,34 +16,32 @@ import com.wanandroid.model.repository.SearchRepository
 /**
  * Created by mou
  * on 2019/4/8 15:29
+ * LiveData与MutableLiveData的其实在概念上是一模一样的.唯一几个的区别如下:
+1.MutableLiveData的父类是LiveData
+2.LiveData在实体类里可以通知指定某个字段的数据更新.
+3.MutableLiveData则是完全是整个实体类或者数据类型变化后才通知.不会细节到某个字段
  */
 class SearchViewModel(private val searchRepository: SearchRepository,
                       private val collectRepository: CollectRepository) : BaseViewModel() {
-
     private var currentPage = 0
-
-    private val _uiState = MutableLiveData<SearchUiModel>()
-    val uiState: LiveData<SearchUiModel>
-        get() = _uiState
+    val uiState = MutableLiveData<SearchUiModel>()
 
 
     fun searchHot(isRefresh: Boolean = false, key: String) {
-        viewModelScope.launch(Dispatchers.Default) {
-
-            withContext(Dispatchers.Main) { emitArticleUiState(showLoading = true) }
-            if (isRefresh) currentPage = 0
-
-            val result = searchRepository.searchHot(currentPage, key)
-
-            withContext(Dispatchers.Main) {
+        viewModelScope.launch(Dispatchers.Main) {
+            emitArticleUiState(showLoading = true)
+            val result = withContext(Dispatchers.Default) {
+                if (isRefresh) currentPage = 0
+                searchRepository.searchHot(currentPage, key)
+            }
                 if (result is Result.Success) {
                     val articleList = result.data
                     if (articleList.offset >= articleList.total) {
                         if (articleList.offset > 0)
                             emitArticleUiState(showLoading = false, showEnd = true)
                         else
-                            emitArticleUiState(showLoading = false, isRefresh = true,showSuccess = ArticleList(0, 0, 0, 0, 0, false, emptyList()))
-                        return@withContext
+                            emitArticleUiState(showLoading = false, isRefresh = true, showSuccess = ArticleList(0, 0, 0, 0, 0, false, emptyList()))
+                        return@launch
                     }
                     currentPage++
                     emitArticleUiState(showLoading = false, showSuccess = articleList, isRefresh = isRefresh)
@@ -51,8 +49,6 @@ class SearchViewModel(private val searchRepository: SearchRepository,
                 } else if (result is Result.Error) {
                     emitArticleUiState(showLoading = false, showError = result.exception.message)
                 }
-
-            }
 
         }
     }
@@ -81,7 +77,9 @@ class SearchViewModel(private val searchRepository: SearchRepository,
         }
     }
 
-
+    /**
+     * 统一赋值
+     */
     private fun emitArticleUiState(
             showHot: Boolean = false,
             showLoading: Boolean = false,
@@ -93,7 +91,7 @@ class SearchViewModel(private val searchRepository: SearchRepository,
             showHotSearch: List<Hot>? = null
     ) {
         val uiModel = SearchUiModel(showHot, showLoading, showError, showSuccess, showEnd, isRefresh, showWebSites, showHotSearch)
-        _uiState.value = uiModel
+        uiState.value = uiModel
     }
 
 

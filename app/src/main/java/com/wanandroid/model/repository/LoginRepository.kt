@@ -27,6 +27,7 @@ class LoginRepository @Inject constructor(val service:WanService) : BaseReposito
                 errorMessage = App.CONTEXT.getString(R.string.about))
     }
 
+
     // TODO Move into DataSource Layer ?
     private suspend fun requestLogin(userName: String, passWord: String): Result<User> {
         val response = service.login(userName, passWord)
@@ -45,7 +46,9 @@ class LoginRepository @Inject constructor(val service:WanService) : BaseReposito
 
     private suspend fun requestRegister(userName: String, passWord: String): Result<User> {
         val response = service.register(userName, passWord, passWord)
-        return executeResponse(response, { requestLogin(userName, passWord) })
+        return executeResponse(response, { requestLogin(userName, passWord) },{
+
+        })
     }
 
 }
