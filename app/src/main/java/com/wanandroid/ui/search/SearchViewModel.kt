@@ -1,6 +1,5 @@
 package com.wanandroid.ui.search
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
@@ -17,9 +16,9 @@ import com.wanandroid.model.repository.SearchRepository
  * Created by mou
  * on 2019/4/8 15:29
  * LiveData与MutableLiveData的其实在概念上是一模一样的.唯一几个的区别如下:
-1.MutableLiveData的父类是LiveData
-2.LiveData在实体类里可以通知指定某个字段的数据更新.
-3.MutableLiveData则是完全是整个实体类或者数据类型变化后才通知.不会细节到某个字段
+ 1.MutableLiveData的父类是LiveData
+ 2.LiveData在实体类里可以通知指定某个字段的数据更新.
+ 3.MutableLiveData则是完全是整个实体类或者数据类型变化后才通知.不会细节到某个字段
  */
 class SearchViewModel(private val searchRepository: SearchRepository,
                       private val collectRepository: CollectRepository) : BaseViewModel() {

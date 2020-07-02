@@ -10,6 +10,7 @@ import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.chad.library.adapter.base.BaseQuickAdapter
+import com.mvvm.core.base.BaseVMFragment
 import com.util.ktx.ext.startKtxActivity
 import com.zhy.view.flowlayout.FlowLayout
 import com.zhy.view.flowlayout.TagAdapter
@@ -25,10 +26,10 @@ import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 
 /**
- * Created by Lu
+ * Created by mou
  * on 2018/4/2 22:00
  */
-class SearchFragment : com.mvvm.core.base.BaseVMFragment<SearchViewModel>() {
+class SearchFragment : BaseVMFragment<SearchViewModel>() {
 
     override fun initVM(): SearchViewModel = getViewModel()
 
