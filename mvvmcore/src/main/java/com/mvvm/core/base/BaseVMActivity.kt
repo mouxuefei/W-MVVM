@@ -1,6 +1,7 @@
 package com.mvvm.core.base
 
 import android.os.Bundle
+import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -28,6 +29,7 @@ abstract class BaseVMActivity<VM : BaseViewModel>(useDataBinding: Boolean = true
         startObserve()
     }
 
+    @LayoutRes
     open fun getLayoutResId(): Int = 0
     abstract fun initVM(): VM
     abstract fun initView()

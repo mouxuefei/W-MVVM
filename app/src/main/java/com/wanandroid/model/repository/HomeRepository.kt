@@ -13,7 +13,7 @@ import com.wanandroid.model.bean.Banner
 class HomeRepository : BaseRepository() {
 
     suspend fun getBanners(): Result<List<Banner>> {
-        return safeApiCall(call = {requestBanners()},errorMessage = "")
+        return safeApiCall(call = {requestBanners()})
     }
 
     private suspend fun requestBanners(): Result<List<Banner>> =
@@ -21,7 +21,7 @@ class HomeRepository : BaseRepository() {
 
 
     suspend fun getArticleList(page: Int): Result<ArticleList> {
-        return safeApiCall(call = { requestArticleList(page) }, errorMessage = "")
+        return safeApiCall(call = { requestArticleList(page) })
     }
 
     private suspend fun requestArticleList(page: Int): Result<ArticleList> =

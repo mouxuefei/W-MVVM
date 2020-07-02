@@ -35,22 +35,19 @@ class LoginActivity : BaseVMActivity<LoginViewModel>(useDataBinding = true) {
     }
 
     override fun startObserve() {
-        loginViewModel.apply {
+        loginViewModel.uiState.observe(this@LoginActivity, Observer {
+            if (it.isLoading) showProgressDialog()
 
-            uiState.observe(this@LoginActivity, Observer {
-                if (it.isLoading) showProgressDialog()
+            it.isSuccess?.let {
+                dismissProgressDialog()
+                finish()
+            }
 
-                it.isSuccess?.let {
-                    dismissProgressDialog()
-                    finish()
-                }
-
-                it.isError?.let { err ->
-                    dismissProgressDialog()
-                    toast(err)
-                }
-            })
-        }
+            it.isError?.let { err ->
+                dismissProgressDialog()
+                toast(err)
+            }
+        })
     }
 
     private var progressDialog: ProgressDialog? = null

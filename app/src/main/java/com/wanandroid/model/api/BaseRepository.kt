@@ -16,7 +16,7 @@ open class BaseRepository {
         return call.invoke()
     }
 
-    suspend fun <T : Any> safeApiCall(call: suspend () -> Result<T>, errorMessage: String): Result<T> {
+    suspend fun <T : Any> safeApiCall(call: suspend () -> Result<T>, errorMessage: String = "请求失败"): Result<T> {
         return try {
             call()
         } catch (e: Exception) {

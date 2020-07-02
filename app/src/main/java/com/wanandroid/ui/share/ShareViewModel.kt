@@ -20,7 +20,12 @@ class ShareViewModel(private val repository: ShareRepository) : BaseViewModel() 
     val title = ObservableField<String>("")
     val url = ObservableField<String>("")
 
+
     private val _uiState = MutableLiveData<ShareUiModel>()
+
+    /**
+     * 暴露一个不可变的livedata只能使用，不能赋值
+     */
     val uiState: LiveData<ShareUiModel>
         get() = _uiState
 

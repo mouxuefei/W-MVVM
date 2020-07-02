@@ -31,7 +31,7 @@ class NavigationFragment : BaseVMFragment<NavigationViewModel>() {
     override fun getLayoutResId() = R.layout.fragment_navigation
 
     override fun initView() {
-        mBinding.setVariable(BR.adapter,navigationAdapter)
+        mBinding.setVariable(BR.adapter, navigationAdapter)
         initTabLayout()
     }
 
@@ -70,10 +70,8 @@ class NavigationFragment : BaseVMFragment<NavigationViewModel>() {
     }
 
     override fun startObserve() {
-        mViewModel.run {
-            uiState.observe(viewLifecycleOwner, Observer {
-                it?.let { getNavigation(it) }
-            })
-        }
+        mViewModel.uiState.observe(viewLifecycleOwner, Observer {
+            it?.let { getNavigation(it) }
+        })
     }
 }

@@ -13,19 +13,19 @@ import com.wanandroid.model.bean.SystemParent
 class ProjectRepository : BaseRepository() {
 
     suspend fun getProjectTypeDetailList(page: Int, cid: Int): Result<ArticleList> {
-        return safeApiCall(call = {requestProjectTypeDetailList(page, cid)},errorMessage = "发生未知错误")
+        return safeApiCall(call = {requestProjectTypeDetailList(page, cid)})
     }
 
     suspend fun getLastedProject(page: Int): Result<ArticleList> {
-        return safeApiCall(call = {requestLastedProject(page)},errorMessage = "发生未知错误")
+        return safeApiCall(call = {requestLastedProject(page)})
     }
 
     suspend fun getProjectTypeList(): Result<List<SystemParent>> {
-        return safeApiCall(call = {requestProjectTypeList()},errorMessage = "网络错误")
+        return safeApiCall(call = {requestProjectTypeList()})
     }
 
     suspend fun getBlog(): Result<List<SystemParent>> {
-        return safeApiCall(call = {requestBlogTypeList()},errorMessage = "网络错误")
+        return safeApiCall(call = {requestBlogTypeList()})
     }
 
     private suspend fun requestProjectTypeDetailList(page: Int, cid: Int) =
