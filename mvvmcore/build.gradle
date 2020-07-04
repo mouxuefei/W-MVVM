@@ -38,13 +38,10 @@ dependencies {
     implementation Deps.kotlin_stdlib
     implementation Deps.appcompat
     implementation Deps.core_ktx
-
-    // Navigation
-    api Deps.navigation_fragment_ktx
-    api Deps.navigation_ui_ktx
+    implementation Deps.swiperefreshlayout
     implementation Deps.constraintlayout
     implementation project(path: ':ktx')
-
+    api Deps.activity_ktx
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

@@ -1,7 +1,6 @@
 package com.wanandroid.ui.square
 
 import androidx.lifecycle.Observer
-import androidx.navigation.Navigation
 import com.util.ktx.ext.startKtxActivity
 import com.util.ktx.ext.toast
 import kotlinx.android.synthetic.main.fragment_square.*

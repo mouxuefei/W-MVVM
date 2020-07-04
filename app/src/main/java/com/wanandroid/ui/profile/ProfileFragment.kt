@@ -5,7 +5,6 @@ import android.net.Uri
 import android.view.Gravity
 import android.view.MenuItem
 import androidx.appcompat.widget.PopupMenu
-import androidx.navigation.Navigation
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.customview.customView
 import com.bumptech.glide.Glide

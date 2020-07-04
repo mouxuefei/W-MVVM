@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.core.os.bundleOf
 import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.Observer
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.util.ktx.ext.toast

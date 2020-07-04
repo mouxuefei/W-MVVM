@@ -8,7 +8,6 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.os.bundleOf
 import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.Observer
-import androidx.navigation.Navigation
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.mvvm.core.base.BaseVMFragment
 import com.util.ktx.ext.startKtxActivity

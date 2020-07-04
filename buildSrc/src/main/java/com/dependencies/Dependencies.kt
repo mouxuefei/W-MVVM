@@ -41,6 +41,10 @@ object Versions {
     const val recyclerView = "1.1.0"
     const val viewmodel_ktx = "2.2.0"
     const val lifecycle_extension = "2.2.0"
+    const val activity_ktx = "1.1.0"
+    const val hilt_android = "2.28-alpha"
+    const val hilt_lifecycle_viewmodel = "1.0.0-alpha01"
+    const val hilt_compiler = "1.0.0-alpha01"
 }
 
 object Deps {
@@ -58,10 +62,18 @@ object Deps {
     const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
     const val viewmodel_ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.viewmodel_ktx}"
     const val lifecycle_extension = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle_extension}"
+    const val activity_ktx = "androidx.activity:activity-ktx:${Versions.activity_ktx}"
+
+    //hilt_android
+    const val hilt_android = "com.google.dagger:hilt-android:${Versions.hilt_android}"
+    const val hilt_android_compiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt_android}"
+    const val hilt_lifecycle_viewmodel = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hilt_lifecycle_viewmodel}"
+    const val hilt_compiler = "androidx.hilt:hilt-compiler:${Versions.hilt_compiler}"
 
     // kotlin
     const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
     const val coroutines_android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines_android}"
+
 
     // network
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"

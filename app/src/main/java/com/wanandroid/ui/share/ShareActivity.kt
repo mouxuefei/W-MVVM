@@ -1,7 +1,6 @@
 package com.wanandroid.ui.share
 
 import androidx.lifecycle.Observer
-import androidx.navigation.Navigation
 import com.util.ktx.ext.toast
 import kotlinx.android.synthetic.main.activity_share.*
 import com.mvvm.core.base.BaseVMActivity
@@ -33,7 +32,7 @@ class ShareActivity : BaseVMActivity<ShareViewModel>() {
         mViewModel.uiState.observe(this, Observer {
 
             it.showSuccess?.let {
-                Navigation.findNavController(shareBt).navigateUp()
+
             }
 
             it.showError?.let { err -> toast(err) }

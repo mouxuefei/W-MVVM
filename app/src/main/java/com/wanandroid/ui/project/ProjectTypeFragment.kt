@@ -3,7 +3,6 @@ package com.wanandroid.ui.project
 import android.os.Bundle
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chad.library.adapter.base.BaseQuickAdapter
 import kotlinx.android.synthetic.main.fragment_projecttype.*

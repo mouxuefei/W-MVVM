@@ -5,8 +5,6 @@ import android.widget.LinearLayout
 import androidx.core.os.bundleOf
 import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.Observer
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.NavHostFragment
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.util.ktx.ext.dp2px
 import com.util.ktx.ext.toast
