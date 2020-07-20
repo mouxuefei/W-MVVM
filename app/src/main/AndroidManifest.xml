@@ -35,6 +35,8 @@
             android:theme="@style/Theme_ShareActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".test.ConstraintLayoutTest" />
+        <activity android:name=".ui.example.ExampleActivity" />
+        <activity android:name=".ui.example.ImageDetailActivity" />
     </application>
 
 </manifest>

@@ -85,6 +85,13 @@
         style="@style/About_Tv"
         android:text="@string/developer" />
 
+    <View style="@style/Line" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/example"
+        style="@style/About_Tv"
+        android:text="@string/example" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -99,6 +106,8 @@
         android:textColor="@color/text_gray"
         android:textSize="14sp"
         android:gravity="center"/>
+
+
 
 
 </LinearLayout>

@@ -90,6 +90,9 @@ class MainActivity : BaseActivity() {
 
             override fun getItemCount() = fragmentList.size
         }
+
+
+
     }
 
 }
