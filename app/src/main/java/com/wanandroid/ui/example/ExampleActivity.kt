@@ -27,10 +27,12 @@ class ExampleActivity : BaseActivity() {
         icon.setOnClickListener {
             goToDetails(url, icon)
         }
+        container1.setOnClickListener {
 
+        }
     }
 
-    fun goToDetails(url: String, imageView: View) {
+    private fun goToDetails(url: String, imageView: View) {
         val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, imageView, url).toBundle()
         Intent(this, ImageDetailActivity::class.java)
                 .putExtra(IMAGE_URL_KEY, url)

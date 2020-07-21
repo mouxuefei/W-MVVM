@@ -24,8 +24,8 @@ import kotlinx.android.synthetic.main.activity_image_detail.*
  * @version V1.0 <描述当前版本功能>
  * @desc
  */
-class ImageDetailActivity:BaseActivity() {
-    override fun getLayoutResId()= R.layout.activity_image_detail
+class ImageDetailActivity : BaseActivity() {
+    override fun getLayoutResId() = R.layout.activity_image_detail
 
     override fun initView() {
         val url = intent.getStringExtra(IMAGE_URL_KEY)
@@ -42,26 +42,29 @@ class ImageDetailActivity:BaseActivity() {
     override fun initData() {
         val url = intent.getStringExtra(IMAGE_URL_KEY)
         act_detail_icon.apply {
-            load(url){
+            load(url) {
                 supportStartPostponedEnterTransition()
             }
             transitionName = url
+            setOnClickListener {
+                onBackPressed()
+            }
         }
     }
 
 }
 
-fun ImageView.load(url: String, loadOnlyFromCache: Boolean = false,onLoadingFinished: () -> Unit = {}) {
+fun ImageView.load(url: String, loadOnlyFromCache: Boolean = false, onLoadingFinished: () -> Unit = {}) {
     val listener = object : RequestListener<Drawable> {
         override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>?, isFirstResource: Boolean): Boolean {
             onLoadingFinished()
-            return  false
+            return false
 
         }
 
         override fun onResourceReady(resource: Drawable?, model: Any?, target: Target<Drawable>?, dataSource: DataSource?, isFirstResource: Boolean): Boolean {
             onLoadingFinished()
-            return  false
+            return false
         }
 
     }
