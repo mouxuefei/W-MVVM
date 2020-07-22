@@ -49,7 +49,6 @@ class ProfileFragment : BaseFragment() {
     }
 
     override fun initData() {
-
         versionName.setOnClickListener { startKtxActivity<ConstraintLayoutTest>() }
         license.setOnClickListener { showOwnLicense() }
         source.setOnClickListener { activity?.openBrowser(GITHUB_PAGE) }
