@@ -1,11 +1,11 @@
 package com.wanandroid.ui
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.CompositePageTransformer
+import androidx.viewpager2.widget.MarginPageTransformer
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_bottom_navigation.*
 import com.mvvm.core.base.BaseActivity
 import com.wanandroid.R
 import com.wanandroid.ui.home.HomeFragment
@@ -13,8 +13,9 @@ import com.wanandroid.ui.profile.ProfileFragment
 import com.wanandroid.ui.project.BlogFragment
 import com.wanandroid.ui.project.ProjectFragment
 import com.wanandroid.ui.search.SearchFragment
-import com.wanandroid.ui.square.ArticleViewModel
-import dagger.hilt.android.AndroidEntryPoint
+import com.wanandroid.view.ScaleInTransformer
+import kotlinx.android.synthetic.main.activity_bottom_navigation.*
+
 
 /**
  * @FileName: MainActivity.java
@@ -31,6 +32,9 @@ class MainActivity : BaseActivity() {
     private val searchFragment by lazy { SearchFragment() }
     private val projectFragment by lazy { ProjectFragment() }
     private val profileFragment by lazy { ProfileFragment() }
+
+    private val bottomIds =
+        arrayListOf<Int>(R.id.home, R.id.blog, R.id.search, R.id.project, R.id.profile)
 
     init {
         fragmentList.run {
@@ -56,43 +60,40 @@ class MainActivity : BaseActivity() {
 
 
     private val onNavigationItemSelected = BottomNavigationView.OnNavigationItemSelectedListener {
-        when (it.itemId) {
-            R.id.home -> {
-                switchFragment(0)
-            }
-            R.id.blog -> {
-                switchFragment(1)
-            }
-            R.id.search -> {
-                switchFragment(2)
-            }
-            R.id.project -> {
-                switchFragment(3)
-            }
-            R.id.profile -> {
-                switchFragment(4)
+        bottomIds.forEachIndexed { index, item ->
+            if (it.itemId == item) {
+                switchFragment(index,false)
             }
         }
+
         true
     }
 
-    private fun switchFragment(position: Int): Boolean {
-//        mainViewpager.currentItem = position
-        mainViewpager.setCurrentItem(position, false)
+    private fun switchFragment(position: Int,smoothScroll:Boolean): Boolean {
+        mainViewpager.setCurrentItem(position, smoothScroll)
         return true
     }
 
     private fun initViewPager() {
-        mainViewpager.isUserInputEnabled = false
-        mainViewpager.offscreenPageLimit = 2
-        mainViewpager.adapter = object : FragmentStateAdapter(this) {
+        mainViewpager.isUserInputEnabled = true
+        mainViewpager.offscreenPageLimit =4
+        val adapter = object : FragmentStateAdapter(supportFragmentManager, lifecycle) {
             override fun createFragment(position: Int) = fragmentList[position]
 
             override fun getItemCount() = fragmentList.size
         }
+        mainViewpager.adapter = adapter
 
+        mainViewpager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                bottomIds.forEachIndexed { index, item ->
+                    if (position == index) {
+                        navView.selectedItemId = item
+                    }
+                }
 
-
+            }
+        })
     }
 
 }

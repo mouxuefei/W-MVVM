@@ -86,5 +86,8 @@ dependencies {
     implementation "com.tencent.tbs.tbssdk:sdk:43697"
 
 
+    implementation Deps.immersionBar
+    implementation Deps.immersionbarComponents
+    implementation Deps.immersionbarKtx
 
 }

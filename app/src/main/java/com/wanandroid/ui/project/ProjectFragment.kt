@@ -30,12 +30,14 @@ open class ProjectFragment : com.mvvm.core.base.BaseVMFragment<ProjectViewModel>
 
     private fun initViewPager() {
 
-        projectViewPager.adapter = object : FragmentStateAdapter(this) {
+      val adapter= object : FragmentStateAdapter(childFragmentManager,lifecycle) {
             override fun getItemCount() = mProjectTypeList.size
 
             override fun createFragment(position: Int) = chooseFragment(position)
 
         }
+
+        projectViewPager.adapter=adapter
 
         TabLayoutMediator(tabLayout, projectViewPager) { tab, position ->
             tab.text = mProjectTypeList[position].name

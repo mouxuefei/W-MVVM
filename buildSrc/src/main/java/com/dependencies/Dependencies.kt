@@ -45,46 +45,58 @@ object Versions {
     const val hilt_android = "2.28-alpha"
     const val hilt_lifecycle_viewmodel = "1.0.0-alpha01"
     const val hilt_compiler = "1.0.0-alpha01"
+    const val immersionBar = "3.0.0"
 }
 
 object Deps {
 
     // androidx
     const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
-    const val constraintlayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
-    const val swiperefreshlayout = "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swipeRefreshLayout}"
+    const val constraintlayout =
+        "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+    const val swiperefreshlayout =
+        "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swipeRefreshLayout}"
     const val material = "com.google.android.material:material:${Versions.material}"
     const val livedata_ktx = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.livedata_ktx}"
     const val viewPager2 = "androidx.viewpager2:viewpager2:${Versions.viewPager2}"
     const val core_ktx = "androidx.core:core-ktx:${Versions.core_ktx}"
-    const val navigation_fragment_ktx = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+    const val navigation_fragment_ktx =
+        "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     const val navigation_ui_ktx = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
     const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
     const val viewmodel_ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.viewmodel_ktx}"
-    const val lifecycle_extension = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle_extension}"
+    const val lifecycle_extension =
+        "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle_extension}"
     const val activity_ktx = "androidx.activity:activity-ktx:${Versions.activity_ktx}"
 
     //hilt_android
     const val hilt_android = "com.google.dagger:hilt-android:${Versions.hilt_android}"
-    const val hilt_android_compiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt_android}"
-    const val hilt_lifecycle_viewmodel = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hilt_lifecycle_viewmodel}"
+    const val hilt_android_compiler =
+        "com.google.dagger:hilt-android-compiler:${Versions.hilt_android}"
+    const val hilt_lifecycle_viewmodel =
+        "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hilt_lifecycle_viewmodel}"
     const val hilt_compiler = "androidx.hilt:hilt-compiler:${Versions.hilt_compiler}"
 
     // kotlin
     const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
-    const val coroutines_android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines_android}"
+    const val coroutines_android =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines_android}"
 
 
     // network
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
-    const val retrofit_converter_gson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit_converter_gson}"
-    const val okhttp_logging_interceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp_logging_interceptor}"
-    const val persistentCookieJar = "com.github.franmontiel:PersistentCookieJar:${Versions.persistentCookieJar}"
+    const val retrofit_converter_gson =
+        "com.squareup.retrofit2:converter-gson:${Versions.retrofit_converter_gson}"
+    const val okhttp_logging_interceptor =
+        "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp_logging_interceptor}"
+    const val persistentCookieJar =
+        "com.github.franmontiel:PersistentCookieJar:${Versions.persistentCookieJar}"
 
     // third
     const val circleimageview = "de.hdodenhof:circleimageview:${Versions.circleImageview}"
     const val leakCanary = "com.squareup.leakcanary:leakcanary-android:${Versions.leakcanary}"
-    const val baseRecyclerViewAdapterHelper = "com.github.CymChad:BaseRecyclerViewAdapterHelper:${Versions.baseRecyclerViewAdapterHelper}"
+    const val baseRecyclerViewAdapterHelper =
+        "com.github.CymChad:BaseRecyclerViewAdapterHelper:${Versions.baseRecyclerViewAdapterHelper}"
     const val banner = "com.youth.banner:banner:${Versions.banner}"
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     const val glide_compiler = "com.github.bumptech.glide:compiler:${Versions.glide_compiler}"
@@ -92,10 +104,22 @@ object Deps {
     const val verticalTabLayout = "q.rorbin:VerticalTabLayout:${Versions.verticalTabLayout}"
     const val flowLayout = "com.hyman:flowlayout-lib:${Versions.flowLayout}"
     const val licensesDialog = "de.psdev.licensesdialog:licensesdialog:${Versions.licensesDialog}"
-    const val material_dialogs_core = "com.afollestad.material-dialogs:core:${Versions.material_dialogs}"
-    const val material_dialogs_input = "com.afollestad.material-dialogs:input:${Versions.material_dialogs}"
+    const val material_dialogs_core =
+        "com.afollestad.material-dialogs:core:${Versions.material_dialogs}"
+    const val material_dialogs_input =
+        "com.afollestad.material-dialogs:input:${Versions.material_dialogs}"
     const val koin_android = "org.koin:koin-android:${Versions.koin}"
     const val koin_androidx_scope = "org.koin:koin-androidx-scope:${Versions.koin}"
     const val koin_androidx_viewmodel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
+
+
+    // statusbar
+    // 基础依赖包，必须要依赖
+    const val immersionBar = "com.gyf.immersionbar:immersionbar:${Versions.immersionBar}"
+    // fragment快速实现（可选）
+    const val immersionbarComponents =
+        "com.gyf.immersionbar:immersionbar-components:${Versions.immersionBar}"
+    // kotlin扩展（可选）
+    const val immersionbarKtx = "com.gyf.immersionbar:immersionbar-ktx:${Versions.immersionBar}"
 
 }
