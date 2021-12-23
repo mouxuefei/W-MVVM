@@ -62,21 +62,21 @@ class MainActivity : BaseActivity() {
     private val onNavigationItemSelected = BottomNavigationView.OnNavigationItemSelectedListener {
         bottomIds.forEachIndexed { index, item ->
             if (it.itemId == item) {
-                switchFragment(index,false)
+                switchFragment(index, false)
             }
         }
 
         true
     }
 
-    private fun switchFragment(position: Int,smoothScroll:Boolean): Boolean {
+    private fun switchFragment(position: Int, smoothScroll: Boolean): Boolean {
         mainViewpager.setCurrentItem(position, smoothScroll)
         return true
     }
 
     private fun initViewPager() {
         mainViewpager.isUserInputEnabled = true
-        mainViewpager.offscreenPageLimit =4
+        mainViewpager.offscreenPageLimit = 4
         val adapter = object : FragmentStateAdapter(supportFragmentManager, lifecycle) {
             override fun createFragment(position: Int) = fragmentList[position]
 
